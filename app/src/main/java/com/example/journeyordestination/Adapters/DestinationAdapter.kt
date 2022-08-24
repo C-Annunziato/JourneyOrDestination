@@ -1,26 +1,27 @@
 package com.example.journeyordestination.Adapters
 
-import android.content.Context
+
+
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
-import java.util.zip.Inflater
 
 class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationViewholder>() {
 
+var list = listOf<String>()
 
-
-    class DestinationViewholder(itemview: View) : RecyclerView.ViewHolder(itemview) {
-        val textview: TextView = itemview.findViewById(R.id.text_view)
+    class DestinationViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textview: TextView = itemView.findViewById(R.id.text_view)
 
     }
 
+
     override fun getItemCount(): Int {
-        return charList().size
+        return list.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewholder {
@@ -32,17 +33,51 @@ class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationVi
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-        holder.textview.text = charList()[position].toString()
+        holder.textview.text = list[position].toString()
     }
 
 
 
 
-}
 
-fun charList(): MutableList<Char> {
-    val chars = 'A'..'Z'
-    val charList: MutableList<Char> = mutableListOf()
-    charList.addAll(chars)
-    return charList
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    private val diffCallback = object : DiffUtil.ItemCallback<MapData>() {
+//
+//
+//
+//        override fun areItemsTheSame(oldItem: MapData, newItem: MapData): Boolean {
+//            return oldItem.duration == newItem.duration
+//        }
+//
+//        override fun areContentsTheSame(oldItem: MapData, newItem: MapData): Boolean {
+//            return oldItem == newItem}
+//
+//    }
+//
+//    private val differ = AsyncListDiffer(this, diffCallback)
+//
+//    var destinationTimeData: List<MapData>
+//        get() = differ.currentList
+//        set(value) {
+//            differ.submitList(value)
+//        }
+
+
 }
