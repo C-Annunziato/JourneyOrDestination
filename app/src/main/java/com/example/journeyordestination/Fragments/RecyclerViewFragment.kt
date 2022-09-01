@@ -26,7 +26,7 @@ class RecyclerViewFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         //inflate the fragment with a recyclerview
         binding = FragmentRecyclerViewBinding.inflate(inflater)
@@ -50,7 +50,9 @@ class RecyclerViewFragment : Fragment() {
 
         lifecycleScope.launchWhenCreated {
             val response = try {
+                Log.d(TAG,"${RetrofitInstance.api.getDirections()} GETDIRECTIONSCALL")
                 RetrofitInstance.api.getDirections()
+
             } catch (e: IOException) {
                 Log.e(TAG, "IOException you might not have internet connection")
                 return@launchWhenCreated
@@ -59,18 +61,17 @@ class RecyclerViewFragment : Fragment() {
                 return@launchWhenCreated
             }
             val responseBody = response.body()
+            Log.d(TAG, "$responseBody RESPONSE BODY" )
+
             if (response.isSuccessful && responseBody != null) {
-                destinationAdapter.list = responseBody.list.flatMap {
-                    it.routes.map {
-                        it.legs.map {
-                            it.duration.text
-                        }
-                    }
-                }.flatten()
+                destinationAdapter.list =
+               responseBody.routes.map { it.legs.map{it.duration.text} }.flatten()
+
             } else {
                 Log.e(TAG, "Response not successful")
             }
         }
+
     }
 
 

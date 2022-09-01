@@ -3,14 +3,19 @@ package com.example.journeyordestination.Adapters
 
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.journeyordestination.ApiResponse.MapData
+import com.example.journeyordestination.ApiResponse.MapDataList
+import com.example.journeyordestination.Fragments.TAG
 import com.example.journeyordestination.R
 
 class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationViewholder>() {
+
 
 var list = listOf<String>()
 
@@ -21,6 +26,7 @@ var list = listOf<String>()
 
 
     override fun getItemCount(): Int {
+        Log.d(TAG,"$list ISTHISLISTNULL")
         return list.size
     }
 
