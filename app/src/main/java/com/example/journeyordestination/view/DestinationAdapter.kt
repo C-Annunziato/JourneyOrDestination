@@ -1,4 +1,4 @@
-package com.example.journeyordestination.Adapters
+package com.example.journeyordestination.view
 
 
 
@@ -9,57 +9,34 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.journeyordestination.ApiResponse.MapData
-import com.example.journeyordestination.ApiResponse.MapDataList
-import com.example.journeyordestination.Fragments.TAG
 import com.example.journeyordestination.R
+import com.example.journeyordestination.viewmodel.Constants
 
-class DestinationAdapter : RecyclerView.Adapter<DestinationAdapter.DestinationViewholder>() {
 
+class DestinationAdapter (var durationList: List<String>) :
+    RecyclerView.Adapter<DestinationAdapter.DestinationViewholder>() {
 
-var list = listOf<String>()
 
     class DestinationViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textview: TextView = itemView.findViewById(R.id.text_view)
 
     }
 
-
     override fun getItemCount(): Int {
-        Log.d(TAG,"$list ISTHISLISTNULL")
-        return list.size
+        Log.d(Constants.TAG,"$durationList GetItemCount")
+        return durationList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DestinationViewholder {
         val layout = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.item_view, parent, false)
-
         return DestinationViewholder(layout)
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-        holder.textview.text = list[position].toString()
+        holder.textview.text = durationList[position]
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

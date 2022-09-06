@@ -1,6 +1,6 @@
-package com.example.journeyordestination.Api
+package com.example.journeyordestination.model.Api
 
-import com.example.journeyordestination.Const.Constants
+import com.example.journeyordestination.viewmodel.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

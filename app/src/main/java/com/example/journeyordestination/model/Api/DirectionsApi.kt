@@ -1,17 +1,14 @@
-package com.example.journeyordestination.Api
+package com.example.journeyordestination.model.Api
 
-import com.example.journeyordestination.ApiResponse.MapData
-import com.example.journeyordestination.ApiResponse.MapDataList
-import com.example.journeyordestination.Const.Constants
+import com.example.journeyordestination.model.Api.ApiResponse.MapData
 import retrofit2.Response
-import retrofit2.http.Body
 import retrofit2.http.GET
 
 interface DirectionsApi {
 
-
-    val apiKey: String
-        get() = Constants.API_KEY
+//
+//    val apiKey: String
+//        get() = Constants.API_KEY
 
 
     //perform get request and get response on another thread
