@@ -10,17 +10,21 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
+import com.example.journeyordestination.model.Api.ApiResponse.Duration
+import com.example.journeyordestination.model.Api.ApiResponse.Leg
 import com.example.journeyordestination.viewmodel.Constants
 
 
-class DestinationAdapter (var durationList: List<String>) :
+
+class DestinationAdapter (var durationList: MutableList<String>) :
     RecyclerView.Adapter<DestinationAdapter.DestinationViewholder>() {
 
-
-    class DestinationViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textview: TextView = itemView.findViewById(R.id.text_view)
-
+    fun updateItems(newItems: MutableList<String>) {
+        durationList.clear()
+        durationList.addAll(newItems)
+        notifyDataSetChanged()
     }
+
 
     override fun getItemCount(): Int {
         Log.d(Constants.TAG,"$durationList GetItemCount")
@@ -35,10 +39,15 @@ class DestinationAdapter (var durationList: List<String>) :
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-        holder.textview.text = durationList[position]
+        holder.textview.text = durationList[position].toString()
     }
 
 
+
+    class DestinationViewholder(view: View) : RecyclerView.ViewHolder(view) {
+        val textview: TextView = view.findViewById(R.id.text_view)
+
+    }
 
 
 //    private val diffCallback = object : DiffUtil.ItemCallback<MapData>() {

@@ -1,7 +1,7 @@
 package com.example.journeyordestination.model.Api
 
-import com.example.journeyordestination.model.Api.ApiResponse.MapData
-import retrofit2.Response
+import com.example.journeyordestination.model.Api.ApiResponse.MapDataResponse
+import retrofit2.Call
 import retrofit2.http.GET
 
 interface DirectionsApi {
@@ -11,8 +11,7 @@ interface DirectionsApi {
 //        get() = Constants.API_KEY
 
 
-    //perform get request and get response on another thread
     @GET("maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCPbwgNc-DuUcavE85xwxdIZszafM_9w1c")
-    suspend fun getDirections(): Response<MapData>
+     fun getDirectionsCall(): Call<MapDataResponse>
 
 }

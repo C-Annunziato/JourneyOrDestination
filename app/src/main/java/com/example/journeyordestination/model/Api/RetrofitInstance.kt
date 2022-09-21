@@ -6,9 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    val apiKey: String
-        get() = Constants.API_KEY
-
     //create retrofit and create service
     val api: DirectionsApi by lazy {
         Retrofit.Builder()
@@ -17,4 +14,6 @@ object RetrofitInstance {
             .build()
             .create(DirectionsApi::class.java)
     }
+
+    fun call() = api.getDirectionsCall()
 }
