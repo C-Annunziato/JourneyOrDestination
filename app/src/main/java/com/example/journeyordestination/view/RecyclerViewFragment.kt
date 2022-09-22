@@ -40,9 +40,9 @@ class RecyclerViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         chooseRVLayout()
-        val data = viewModel.fetchData()
-        Log.i(LOG, "$data")
+        viewModel.fetchData()
         observeViewModel()
+
     }
 
 

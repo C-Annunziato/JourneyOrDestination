@@ -13,7 +13,7 @@ import com.example.journeyordestination.R
 import com.example.journeyordestination.model.Api.ApiResponse.Duration
 import com.example.journeyordestination.model.Api.ApiResponse.Leg
 import com.example.journeyordestination.viewmodel.Constants
-
+import org.w3c.dom.Text
 
 
 class DestinationAdapter (var durationList: MutableList<String>) :
@@ -22,9 +22,16 @@ class DestinationAdapter (var durationList: MutableList<String>) :
     fun updateItems(newItems: MutableList<String>) {
         durationList.clear()
         durationList.addAll(newItems)
+        durationList.add(newItems.toString())
         notifyDataSetChanged()
     }
 
+    fun removeItems(holder: DestinationViewholder){
+        holder.textview.setOnClickListener {
+          durationList.removeAt(holder.adapterPosition)
+            notifyDataSetChanged()
+        }
+    }
 
     override fun getItemCount(): Int {
         Log.d(Constants.TAG,"$durationList GetItemCount")
@@ -39,10 +46,9 @@ class DestinationAdapter (var durationList: MutableList<String>) :
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-        holder.textview.text = durationList[position].toString()
+        holder.textview.text = durationList[position]
+        removeItems(holder)
     }
-
-
 
     class DestinationViewholder(view: View) : RecyclerView.ViewHolder(view) {
         val textview: TextView = view.findViewById(R.id.text_view)
