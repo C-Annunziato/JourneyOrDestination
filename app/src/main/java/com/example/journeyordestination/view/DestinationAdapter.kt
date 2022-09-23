@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
 import com.example.journeyordestination.model.Api.ApiResponse.Duration
@@ -54,6 +56,8 @@ class DestinationAdapter (var durationList: MutableList<String>) :
         val textview: TextView = view.findViewById(R.id.text_view)
 
     }
+
+
 
 
 //    private val diffCallback = object : DiffUtil.ItemCallback<MapData>() {

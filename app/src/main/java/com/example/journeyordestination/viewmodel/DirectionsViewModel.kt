@@ -3,11 +3,17 @@ package com.example.journeyordestination.viewmodel
 import android.content.ContentValues.TAG
 import android.nfc.Tag
 import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.journeyordestination.R
 import com.example.journeyordestination.model.Api.ApiResponse.MapDataResponse
 import com.example.journeyordestination.model.Api.RetrofitInstance
+import com.example.journeyordestination.view.DestinationAdapter
+import com.example.journeyordestination.view.RecyclerViewFragment
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -50,7 +56,11 @@ class DirectionsViewModel : ViewModel() {
             error.value = message
             loading.value = false
         }
+
     }
+
+
+
 
 //    var job: Job? = null
 //    val execptionHandeler = CoroutineExceptionHandler { coroutineContext, throwable ->
