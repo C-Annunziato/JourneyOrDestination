@@ -17,8 +17,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    buildFeatures{
-        viewBinding = true
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {
@@ -58,4 +58,5 @@ dependencies {
 
     //GSON
     implementation 'com.google.code.gson:gson:2.8.9'
+
 }

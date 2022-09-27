@@ -16,10 +16,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
-import com.example.journeyordestination.viewmodel.DirectionsViewModel
 import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
-import com.example.journeyordestination.viewmodel.Constants
-import org.w3c.dom.Text
+import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
 const val LOG = "fragment"
 
@@ -28,37 +26,41 @@ class RecyclerViewFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentRecyclerViewBinding
     private val viewModel: DirectionsViewModel by viewModels()
-    private val destinationAdapter = DestinationAdapter(mutableListOf())
+    private val destinationAdapter = DestinationAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        //inflate the fragment with a recyclerview
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.i(TAG, "on view created called")
         chooseRVLayout()
-        viewModel.fetchData()
         observeViewModel()
+//        val textView: TextView = view.findViewById(R.id.text_view)
+//        textView.setOnClickListener {
+////            createAlertDialog()
+//        }
+//        val textView: TextView = view.findViewById(R.id.text_view)
+//        textView.setOnClickListener {
+//            viewModel.removeItems(DestinationAdapter.DestinationViewholder(it)) }
     }
 
 
-    //bind adapter and set layout manager for recyclerview
     private fun chooseRVLayout() {
         recyclerView = binding.recyclerViewDestinations
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = destinationAdapter
     }
 
-
     fun observeViewModel() {
         viewModel.apiResponse.observe(viewLifecycleOwner, Observer { duration ->
             duration?.let {
-
-                destinationAdapter.updateItems(it as MutableList<String>)
+                Log.i(TAG, "${viewModel.apiResponse.value} fragment hi")
+                destinationAdapter.submitList(duration)
             }
         })
 
@@ -72,22 +74,17 @@ class RecyclerViewFragment : Fragment() {
         })
     }
 
-    fun createAlertDialog(textView: TextView) {
-        val removalItemAlertDialog = context?.let {
-            AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
-                .setMessage("Are you sure you want to delete this Item?")
-                .setPositiveButton("Yes") { _, _ ->
-                    Toast.makeText(context, "positive", 1000).show()
-                }.setNegativeButton("Cancel") { _, _ ->
-                    Toast.makeText(context, "negative", 1000).show()
-                }.create()
-        }
-        textView.setOnClickListener {
-            destinationAdapter.removeItems(DestinationAdapter.DestinationViewholder(it)) }
-    }
-
-
-
+//    fun createAlertDialog() {
+//        context?.let {
+//            AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
+//                .setMessage("Are you sure you want to delete this Item?")
+//                .setPositiveButton("Yes") { _, _ ->
+//                    Toast.makeText(context, "positive", 1000).show()
+//                }.setNegativeButton("Cancel") { _, _ ->
+//                    Toast.makeText(context, "negative", 1000).show()
+//                }.create()
+//        }
+//    }
 }
 
 
