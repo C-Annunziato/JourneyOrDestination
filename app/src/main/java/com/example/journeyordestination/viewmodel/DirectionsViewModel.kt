@@ -12,7 +12,7 @@ import retrofit2.Response
 
 const val TAG = "fragment"
 
-class DirectionsViewModel : ViewModel() {
+class DirectionsViewModel() : ViewModel() {
 
     val apiResponse = MutableLiveData<MutableList<String>>()
     val loading = MutableLiveData<Boolean>()

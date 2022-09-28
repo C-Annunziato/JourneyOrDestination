@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
@@ -26,12 +25,16 @@ class RecyclerViewFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentRecyclerViewBinding
     private val viewModel: DirectionsViewModel by viewModels()
-    private val destinationAdapter = DestinationAdapter()
+    private val destinationAdapter =
+        DestinationAdapter(DestinationAdapter.OnClickListener { createAlertDialog() })
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
+
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -40,13 +43,6 @@ class RecyclerViewFragment : Fragment() {
         Log.i(TAG, "on view created called")
         chooseRVLayout()
         observeViewModel()
-//        val textView: TextView = view.findViewById(R.id.text_view)
-//        textView.setOnClickListener {
-////            createAlertDialog()
-//        }
-//        val textView: TextView = view.findViewById(R.id.text_view)
-//        textView.setOnClickListener {
-//            viewModel.removeItems(DestinationAdapter.DestinationViewholder(it)) }
     }
 
 
@@ -60,7 +56,7 @@ class RecyclerViewFragment : Fragment() {
         viewModel.apiResponse.observe(viewLifecycleOwner, Observer { duration ->
             duration?.let {
                 Log.i(TAG, "${viewModel.apiResponse.value} fragment hi")
-                destinationAdapter.submitList(duration)
+                destinationAdapter?.submitList(duration)
             }
         })
 
@@ -74,17 +70,19 @@ class RecyclerViewFragment : Fragment() {
         })
     }
 
-//    fun createAlertDialog() {
-//        context?.let {
-//            AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
-//                .setMessage("Are you sure you want to delete this Item?")
-//                .setPositiveButton("Yes") { _, _ ->
-//                    Toast.makeText(context, "positive", 1000).show()
-//                }.setNegativeButton("Cancel") { _, _ ->
-//                    Toast.makeText(context, "negative", 1000).show()
-//                }.create()
-//        }
-//    }
+
+    fun createAlertDialog() {
+        context?.let {
+            AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
+                .setMessage("Are you sure you want to delete this Item?")
+                .setPositiveButton("Yes") { _, _ ->
+                    Toast.makeText(context, "positive", 1000).show()
+                }.setNegativeButton("Cancel") { _, _ ->
+                    Toast.makeText(context, "negative", 1000).show()
+                }.create()
+        }
+    }
+
 }
 
 
