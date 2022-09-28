@@ -18,7 +18,6 @@ import com.example.journeyordestination.R
 import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
-const val LOG = "fragment"
 
 class RecyclerViewFragment : Fragment() {
 
@@ -26,7 +25,9 @@ class RecyclerViewFragment : Fragment() {
     private lateinit var binding: FragmentRecyclerViewBinding
     private val viewModel: DirectionsViewModel by viewModels()
     private val destinationAdapter =
-        DestinationAdapter(DestinationAdapter.OnClickListener { createAlertDialog() })
+        DestinationAdapter(DestinationAdapter.OnClickListener {
+            createAlertDialog()
+        })
 
 
     override fun onCreateView(
@@ -40,7 +41,6 @@ class RecyclerViewFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.i(TAG, "on view created called")
         chooseRVLayout()
         observeViewModel()
     }
@@ -55,7 +55,6 @@ class RecyclerViewFragment : Fragment() {
     fun observeViewModel() {
         viewModel.apiResponse.observe(viewLifecycleOwner, Observer { duration ->
             duration?.let {
-                Log.i(TAG, "${viewModel.apiResponse.value} fragment hi")
                 destinationAdapter?.submitList(duration)
             }
         })
@@ -79,7 +78,7 @@ class RecyclerViewFragment : Fragment() {
                     Toast.makeText(context, "positive", 1000).show()
                 }.setNegativeButton("Cancel") { _, _ ->
                     Toast.makeText(context, "negative", 1000).show()
-                }.create()
+                }.create().show()
         }
     }
 

@@ -1,6 +1,9 @@
 package com.example.journeyordestination.view
 
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -14,13 +17,14 @@ import com.example.journeyordestination.databinding.ItemViewBinding
 import com.example.journeyordestination.model.Api.ApiResponse.Duration
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
-
+const val  TAG = "adapter"
 class DestinationAdapter(
     private val onClickListener: OnClickListener
 ) :
     androidx.recyclerview.widget.ListAdapter<String, DestinationAdapter.DestinationViewholder>(
     DiffUtilCallback
 ) {
+
 
     object DiffUtilCallback : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
@@ -56,7 +60,7 @@ class DestinationAdapter(
     }
 
     class OnClickListener(val clickListener: () -> Unit) {
-        fun onClick() = clickListener
+        fun onClick() = clickListener()
     }
 
 }
