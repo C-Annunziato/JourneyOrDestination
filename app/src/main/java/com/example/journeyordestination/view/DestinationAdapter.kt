@@ -17,14 +17,13 @@ import com.example.journeyordestination.databinding.ItemViewBinding
 import com.example.journeyordestination.model.Api.ApiResponse.Duration
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
-const val  TAG = "adapter"
+const val TAG = "adapter"
+
 class DestinationAdapter(
     private val onClickListener: OnClickListener
-) :
-    androidx.recyclerview.widget.ListAdapter<String, DestinationAdapter.DestinationViewholder>(
+) : androidx.recyclerview.widget.ListAdapter<String, DestinationAdapter.DestinationViewholder>(
     DiffUtilCallback
 ) {
-
 
     object DiffUtilCallback : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
@@ -36,9 +35,15 @@ class DestinationAdapter(
         }
     }
 
-    class DestinationViewholder(private val binding: ItemViewBinding) : ViewHolder(binding.root) {
+    class DestinationViewholder(
+        private val binding: ItemViewBinding,
+        onClickListener: OnClickListener
+    ) : ViewHolder(binding.root) {
         val textView: TextView = binding.textView
 
+        init {
+            binding.textView.setOnClickListener { onClickListener.onClick() }
+        }
 
     }
 
@@ -46,17 +51,12 @@ class DestinationAdapter(
         return DestinationViewholder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context), R.layout.item_view, parent, false
-            )
+            ), onClickListener
         )
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-
         holder.textView.text = getItem(position)
-
-        holder.itemView.setOnClickListener{
-            onClickListener.onClick()
-        }
     }
 
     class OnClickListener(val clickListener: () -> Unit) {
