@@ -1,21 +1,17 @@
 ﻿package com.example.journeyordestination.view
 
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.journeyordestination.R
 import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
@@ -29,7 +25,6 @@ class RecyclerViewFragment : Fragment() {
     private val viewModel: DirectionsViewModel by viewModels()
     private lateinit var destinationAdapter: DestinationAdapter
 
-//    private var removeItem: (Int) -> Unit = viewModel::remove
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -72,20 +67,6 @@ class RecyclerViewFragment : Fragment() {
             }
         })
     }
-
-//    fun createAlertDialog() {
-//        context?.let {
-//            AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
-//                .setMessage("Are you sure you want to delete this Item?")
-//                .setPositiveButton("Yes") { _, _ ->
-//                    viewModel.remove(0)
-////                    removeItem(0)
-//                }.setNegativeButton("Cancel") { _, _ ->
-//                    Toast.makeText(context, "negative", 1000).show()
-//                }.create().show()
-//        }
-//    }
-
 
 }
 

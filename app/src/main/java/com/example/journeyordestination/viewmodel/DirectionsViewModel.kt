@@ -4,11 +4,9 @@ package com.example.journeyordestination.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.journeyordestination.model.Api.ApiResponse.MapDataResponse
 import com.example.journeyordestination.model.Api.RetrofitInstance
-import com.example.journeyordestination.view.DestinationAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +27,6 @@ class DirectionsViewModel() : ViewModel() {
         fetchData()
         Log.i(TAG, "${apiResponse.value} fetched")
     }
-
 
     fun fetchData() {
         _loading.value = true
@@ -62,11 +59,11 @@ class DirectionsViewModel() : ViewModel() {
     fun remove(int: Int) {
         if (!_apiResponse.value.isNullOrEmpty()) {
             _apiResponse.removeAt(int)
-
         }
     }
 }
 
+// Helper class to used get the live data to update properly
 class MutableListLiveData<T>(
     private val list: MutableList<T> = mutableListOf()
 ) : MutableList<T> by list, LiveData<List<T>>() {
