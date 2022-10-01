@@ -15,7 +15,11 @@
             app:destination="@id/addDestinationFragment" />
     </fragment>
 
-
+<fragment
+    android:id="@+id/menu_add_contact"
+    android:label="Add Contact"
+    android:name="com.example.journeyordestination.view.AddDestinationFragment"
+    />
     <fragment
         android:id="@+id/addDestinationFragment"
         android:name="com.example.journeyordestination.view.AddDestinationFragment"
