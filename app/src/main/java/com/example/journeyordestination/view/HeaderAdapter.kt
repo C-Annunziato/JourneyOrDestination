@@ -10,7 +10,7 @@ import com.example.journeyordestination.R
 
 class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
-    private var listCount = 0
+    private var headerNum = 0
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val rvHeaderTextView: TextView = itemView.findViewById(R.id.header_text)
@@ -26,7 +26,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-        holder.bind(listCount)
+        holder.bind(headerNum)
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +34,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     }
 
     fun updateListSize(listSize: Int) {
-        listCount = listSize
+        headerNum = listSize
         notifyDataSetChanged()
     }
 

@@ -8,6 +8,17 @@
     <fragment
         android:id="@+id/recyclerViewFragment"
         android:name="com.example.journeyordestination.view.RecyclerViewFragment"
-        android:label="fragment_recycler_view"
-        tools:layout="@layout/fragment_recycler_view" />
+        android:label="@string/destinations"
+        tools:layout="@layout/fragment_recycler_view">
+        <action
+            android:id="@+id/action_recyclerViewFragment_to_addDestinationFragment"
+            app:destination="@id/addDestinationFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/addDestinationFragment"
+        android:name="com.example.journeyordestination.view.AddDestinationFragment"
+        android:label="@string/add_destinations" />
+
 </navigation>
