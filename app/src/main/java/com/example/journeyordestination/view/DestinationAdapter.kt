@@ -67,6 +67,7 @@ class DestinationAdapter(
         holder.bind(getItem(position))
     }
 
+
 }
 
 

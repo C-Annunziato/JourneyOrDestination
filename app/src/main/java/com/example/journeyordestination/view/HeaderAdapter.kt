@@ -13,11 +13,11 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     private var headerNum = 0
 
     class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val rvHeaderTextView: TextView = itemView.findViewById(R.id.header_text)
+//        private val rvHeaderTextView: TextView = itemView.findViewById(R.id.header_text)
 
-        fun bind(listSize: Int) {
-            rvHeaderTextView.text = "Destinations: $listSize"
-        }
+//        fun bind(listSize: Int) {
+//            rvHeaderTextView.text = "Destinations: $listSize"
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderViewHolder {
@@ -26,7 +26,7 @@ class HeaderAdapter : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-        holder.bind(headerNum)
+//        holder.bind(headerNum)
     }
 
     override fun getItemCount(): Int {

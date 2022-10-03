@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/menu_add_contact"
-        android:icon="@drawable/ic_add_contact"
+        android:icon="@drawable/ic_go_to_destination"
         android:title="Add Contact"
         app:showAsAction="ifRoom" />
 
