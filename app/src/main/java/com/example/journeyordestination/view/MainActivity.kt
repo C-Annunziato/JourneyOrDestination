@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
@@ -23,7 +24,7 @@ import com.google.android.material.textfield.TextInputLayout
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    var toggle = true
+    private var toggle = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         setupActionBarWithNavController(navController)
+
     }
 
 
@@ -49,29 +51,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-//        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
-
         val rvHeaderCL: ConstraintLayout = findViewById(R.id.rv_header_constraint_layout)
-        val firstEditText: TextInputLayout = findViewById(R.id.first_text_field_layout)
-        val secondEditText: TextInputLayout = findViewById(R.id.second_text_field_layout)
 
         if (toggle) {
+            rvHeaderCL.visibility = View.VISIBLE
+        } else {
             rvHeaderCL.visibility = View.GONE
-            firstEditText.visibility = View.GONE
-            secondEditText.visibility = View.GONE
-            toggle = false
-            return true
-        } else rvHeaderCL.visibility = View.VISIBLE
-        firstEditText.visibility = View.VISIBLE
-        secondEditText.visibility = View.VISIBLE
-        toggle = true
+        }
+        toggle = !toggle
         return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
 
 }
 
