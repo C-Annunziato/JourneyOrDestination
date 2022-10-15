@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
+        android:id="@+id/header_frame_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -61,8 +62,10 @@
                 android:id="@+id/complete_entry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
                 android:src="@drawable/ic_complete_entry_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/first_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,8 +76,11 @@
                 android:id="@+id/swap_directions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
                 android:src="@drawable/ic_swap_directions"
                 app:layout_constraintBottom_toBottomOf="@+id/second_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"

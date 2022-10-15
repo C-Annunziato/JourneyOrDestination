@@ -9,7 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.FrameLayout.LayoutParams
+import android.widget.ImageView
 import android.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.children
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -20,6 +26,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
 import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 const val hey = "fragment"
 
@@ -40,7 +48,6 @@ class RecyclerViewFragment : Fragment() {
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
 
-
         return binding.root
     }
 
@@ -50,6 +57,7 @@ class RecyclerViewFragment : Fragment() {
         }
         chooseRVLayout()
         observeViewModel()
+
     }
 
     private fun chooseRVLayout() {
@@ -69,7 +77,7 @@ class RecyclerViewFragment : Fragment() {
         })
 
         viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
-            isLoading?.let {
+            isLoading.let {
                 binding.loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 if (it) {
                     binding.listError.visibility = View.GONE
@@ -77,8 +85,6 @@ class RecyclerViewFragment : Fragment() {
             }
         })
     }
-
-
 
 }
 

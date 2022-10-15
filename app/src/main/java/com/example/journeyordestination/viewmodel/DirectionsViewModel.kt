@@ -19,6 +19,7 @@ class DirectionsViewModel() : ViewModel() {
     private val _loading = MutableLiveData<Boolean>()
     private val _error = MutableLiveData<String>()
 
+
     val apiResponse: LiveData<List<String>> = _apiResponse
     val loading: LiveData<Boolean> = _loading
     val error: LiveData<String> = _error
