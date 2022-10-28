@@ -60,7 +60,6 @@ class DestinationAdapter(
                     .setMessage("Are you sure you want to delete this Item?")
                     .setPositiveButton("Yes") { _, _ ->
                         removeItem(bindingAdapterPosition)
-                        notifyItemRemoved(bindingAdapterPosition)
                     }.setNegativeButton("Cancel") { _, _ ->
                     }.create().show()
             }
@@ -107,7 +106,6 @@ class DestinationAdapter(
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
         Log.i(TAG, "onbindviewholder being called")
-//        Log.i(TAG, " This is the position ${getItem(position)}")
         holder.bind(getItem(position))
 
     }

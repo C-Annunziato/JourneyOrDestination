@@ -8,11 +8,7 @@ import retrofit2.http.Query
 
 interface DirectionsApi {
 
-
-    @GET(
-        "maps/api/directions/json?"
-//                "&key=${com.example.journeyordestination.BuildConfig.DIRECTIONS_API_KEY}"
-    )
+    @GET("maps/api/directions/json?")
 
     fun getDirectionsCall(
         @Query("origin") origin_id: String?,

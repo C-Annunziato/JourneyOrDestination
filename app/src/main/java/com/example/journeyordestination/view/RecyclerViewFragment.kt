@@ -26,10 +26,10 @@ const val hey = "fragment"
 
 class RecyclerViewFragment : Fragment() {
 
-    private val headerAdapter = HeaderAdapter()
+    private val viewModel: DirectionsViewModel by viewModels()
+    private lateinit var headerAdapter: HeaderAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentRecyclerViewBinding
-    private val viewModel: DirectionsViewModel by activityViewModels()
     private lateinit var destinationAdapter: DestinationAdapter
     private lateinit var navController: NavController
 
@@ -38,7 +38,6 @@ class RecyclerViewFragment : Fragment() {
     ): View {
         binding = FragmentRecyclerViewBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-
         return binding.root
     }
 
@@ -46,9 +45,9 @@ class RecyclerViewFragment : Fragment() {
         destinationAdapter = DestinationAdapter { position ->
             viewModel.remove(position)
         }
+        headerAdapter = HeaderAdapter(viewModel)
         chooseRVLayout()
         observeViewModel()
-
     }
 
     private fun chooseRVLayout() {
@@ -60,15 +59,10 @@ class RecyclerViewFragment : Fragment() {
 
     private fun observeViewModel() {
 
-
-
         viewModel.destinationApiResponse.observe(viewLifecycleOwner) { duration ->
-            Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
-            Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
-            Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
-            Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
-            Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
+            Log.i(hey, "From: Fragment ->OUTSIDE DURATIOJN")
             duration?.let {
+                Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
 
                 destinationAdapter.submitList(duration)
                 headerAdapter.updateListSize(duration.size)
@@ -77,6 +71,7 @@ class RecyclerViewFragment : Fragment() {
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             isLoading.let {
+                Log.i(TAG, "From: Fragment -> loading view is being set to GONE")
                 binding.loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 binding.listError.visibility = View.GONE
             }
