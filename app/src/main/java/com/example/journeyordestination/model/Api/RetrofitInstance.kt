@@ -1,11 +1,15 @@
 package com.example.journeyordestination.model.Api
 
-import com.example.journeyordestination.viewmodel.Constants
+import android.util.Log
+import com.example.journeyordestination.model.Api.ApiResponseDirections.MapDataResponse
+import com.example.journeyordestination.viewmodel.DirectionsViewModel
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitInstance {
+const val TAGS = "hello"
 
+object RetrofitInstance {
     //create retrofit and create service
     val api: DirectionsApi by lazy {
         Retrofit.Builder()
@@ -15,5 +19,10 @@ object RetrofitInstance {
             .create(DirectionsApi::class.java)
     }
 
-    fun call() = api.getDirectionsCall()
+    fun call(originId: String?, destinationId: String?, apiKey: String): Call<MapDataResponse> {
+
+//        Log.i(TAGS, " From: RetrofitInstance - > getDirectionsCallParams $destinationId, $originId")
+        return api.getDirectionsCall("place_id:$originId", "place_id:$destinationId", apiKey)
+    }
 }
+

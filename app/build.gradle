@@ -1,7 +1,11 @@
+import org.gradle.api.initialization.resolve.DependencyResolutionManagement
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "org.jetbrains.kotlin.kapt"
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -16,7 +20,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        buildConfigField "String", "DIRECTIONS_API_KEY", "\"${properties.getProperty("DIRECTIONS_API_KEY")}\""
+        buildConfigField "String", "PLACES_API_KEY", "\"${properties.getProperty("PLACES_API_KEY")}\""
     }
+
     buildFeatures {
         dataBinding = true
     }
@@ -61,5 +71,16 @@ dependencies {
 
     //ConcatAdapter
     implementation "androidx.recyclerview:recyclerview:1.2.0-alpha04"
+
+    //Places
+    implementation 'com.google.android.libraries.places:places:2.6.0'
+
+    //google play
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+
+    //PlacesAutocompleteTextView
+    implementation 'com.seatgeek:placesautocomplete:0.3-SNAPSHOT'
 
 }

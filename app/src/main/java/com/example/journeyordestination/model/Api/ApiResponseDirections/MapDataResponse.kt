@@ -1,4 +1,4 @@
-package com.example.journeyordestination.model.Api.ApiResponse
+package com.example.journeyordestination.model.Api.ApiResponseDirections
 
 data class MapDataResponse(
     val geocoded_waypoints: List<GeocodedWaypoint>,

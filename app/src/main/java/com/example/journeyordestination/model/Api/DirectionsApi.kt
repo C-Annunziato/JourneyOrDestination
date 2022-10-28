@@ -1,17 +1,23 @@
 package com.example.journeyordestination.model.Api
 
-import com.example.journeyordestination.model.Api.ApiResponse.MapDataResponse
+import com.example.journeyordestination.model.Api.ApiResponseDirections.MapDataResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DirectionsApi {
 
-//
-//    val apiKey: String
-//        get() = Constants.API_KEY
 
+    @GET(
+        "maps/api/directions/json?"
+//                "&key=${com.example.journeyordestination.BuildConfig.DIRECTIONS_API_KEY}"
+    )
 
-    @GET("maps/api/directions/json?origin=Toronto&destination=Montreal&key=AIzaSyCPbwgNc-DuUcavE85xwxdIZszafM_9w1c")
-     fun getDirectionsCall(): Call<MapDataResponse>
+    fun getDirectionsCall(
+        @Query("origin") origin_id: String?,
+        @Query("destination") destination_id: String?,
+        @Query("key") apiKey: String,
+    ): Call<MapDataResponse>
 
 }

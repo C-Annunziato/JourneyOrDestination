@@ -5,7 +5,7 @@ import android.view.animation.AnimationUtils
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.example.journeyordestination.R
 
-
+//not currently in use
 fun View.slideUp(animTime: Long, startOffset: Long){
     val slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up_animation).apply {
         duration = animTime

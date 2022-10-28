@@ -1,4 +1,4 @@
-package com.example.journeyordestination.model.Api.ApiResponse
+package com.example.journeyordestination.model.Api.ApiResponseDirections
 
 data class GeocodedWaypoint(
     val geocoder_status: String,

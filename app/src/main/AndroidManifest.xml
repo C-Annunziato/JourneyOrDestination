@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JourneyOrDestination"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.DIRECTIONS_API_KEY"
+            android:value="${DIRECTIONS_API_KEY}" />
+
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

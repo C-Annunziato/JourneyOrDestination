@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="buildConfig"
+            type="com.example.journeyordestination.BuildConfig" />
+
+    </data>
+
     <FrameLayout
         android:id="@+id/header_frame_layout"
         android:layout_width="match_parent"
@@ -16,9 +23,10 @@
             android:layout_marginBottom="10dp"
             tools:context=".view.AddDestinationFragment">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/first_text_field_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
@@ -28,18 +36,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/your_location_edit_text"
+                <com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
+                    android:id="@+id/origin_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Your Location"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
+                    app:pacv_historyFile="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/second_text_field_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
@@ -49,12 +59,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/first_text_field_layout">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
                     android:id="@+id/destination_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Your Destination"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
+                    app:pacv_historyFile="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,10 +74,11 @@
                 android:id="@+id/complete_entry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:src="@drawable/ic_complete_entry_dark"
                 app:layout_constraintBottom_toBottomOf="@+id/first_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,11 +89,11 @@
                 android:id="@+id/swap_directions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:src="@drawable/ic_swap_directions"
                 app:layout_constraintBottom_toBottomOf="@+id/second_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
