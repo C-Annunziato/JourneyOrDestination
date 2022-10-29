@@ -17,7 +17,7 @@ class DirectionsViewModel() : ViewModel() {
 
     private val _destinationaApiResponse = MutableLiveData<List<String>>()
 
-    private val _loading = MutableLiveData<Boolean>()
+    private val _loading = MutableLiveData<Boolean>(false)
     private val _error = MutableLiveData<String>()
 
     private val _origin = MutableLiveData<String?>()
@@ -43,14 +43,10 @@ class DirectionsViewModel() : ViewModel() {
         fetchDirectionsData()
     }
 
-    private fun fetchDirectionsData() = viewModelScope.launch {
+    private fun fetchDirectionsData() {
         val apiKey = com.example.journeyordestination.BuildConfig.DIRECTIONS_API_KEY
-        _loading.postValue(false)
 
-        _error.value = null
-//                Log.i(TAG, "From: ViewModel -> value of loading is ${loading.value}")
-        _loading.value = false
-//                Log.i(TAG, "From: ViewModel -> value of loading is now ${loading.value}")
+        _loading.value = true
 
         RetrofitInstance.call(
             origin.value, destination.value, apiKey
@@ -76,6 +72,8 @@ class DirectionsViewModel() : ViewModel() {
                         "From ViewModel -> value of api response is ${destinationApiResponse.value}"
                     )
                 }
+                _error.value = null
+                _loading.value = false
             }
 
             override fun onFailure(call: Call<MapDataResponse>, t: Throwable) {
@@ -101,45 +99,3 @@ class DirectionsViewModel() : ViewModel() {
         }
     }
 }
-
-// Helper class to used get the live data to update properly
-//class MutableListLiveData<T>(
-//    private val list: MutableList<T> = mutableListOf()
-//) : MutableList<T> by list, LiveData<List<T>>() {
-//
-//    override fun add(element: T): Boolean = element.actionAndUpdate { list.add(it) }
-//
-//    override fun add(index: Int, element: T) = list.add(index, element).also { updateValue() }
-//
-//    override fun addAll(elements: Collection<T>): Boolean =
-//        elements.actionAndUpdate { list.addAll(elements) }
-//
-//    override fun addAll(index: Int, elements: Collection<T>): Boolean =
-//        elements.actionAndUpdate { list.addAll(index, it) }
-//
-//    override fun remove(element: T): Boolean = element.actionAndUpdate { list.remove(it) }
-//
-//    override fun removeAt(index: Int): T = list.removeAt(index).also { updateValue() }
-//
-//    override fun removeAll(elements: Collection<T>): Boolean =
-//        elements.actionAndUpdate { list.removeAll(it) }
-//
-//    override fun retainAll(elements: Collection<T>): Boolean =
-//        elements.actionAndUpdate { list.retainAll(it) }
-//
-//    override fun clear() = list.clear().also { updateValue() }
-//
-//    override fun set(index: Int, element: T): T = list.set(index, element).also { updateValue() }
-//
-//    private fun <T> T.actionAndUpdate(action: (item: T) -> Boolean): Boolean =
-//        action(this).applyIfTrue { updateValue() }
-//
-//    private fun Boolean.applyIfTrue(action: () -> Unit): Boolean {
-//        takeIf { it }?.run { action() }
-//        return this
-//    }
-//
-//    private fun updateValue() {
-//        value = list
-//    }
-//}
