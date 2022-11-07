@@ -7,7 +7,6 @@
         <variable
             name="buildConfig"
             type="com.example.journeyordestination.BuildConfig" />
-
     </data>
 
     <FrameLayout
@@ -19,6 +18,7 @@
             android:id="@+id/rv_header_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginStart="28dp"
             android:layout_marginBottom="10dp"
             tools:context=".view.AddDestinationFragment">
@@ -99,7 +99,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/second_text_field_layout"
                 app:layout_constraintTop_toTopOf="@+id/second_text_field_layout" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

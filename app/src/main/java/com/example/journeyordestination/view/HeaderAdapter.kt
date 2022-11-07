@@ -10,13 +10,19 @@ import com.example.journeyordestination.viewmodel.DirectionsViewModel
 import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
 
 const val TAG2 = "frag"
-class HeaderAdapter(val vm: DirectionsViewModel) : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
+
+class HeaderAdapter(val vm: DirectionsViewModel) :
+    RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
 
     private var headerNum = 0
 
     inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val addEntry: ImageView = view.findViewById(R.id.complete_entry)
+        private val destinationEditText: PlacesAutocompleteTextView =
+            view.findViewById(R.id.destination_edit_text)
+        private val originExitText: PlacesAutocompleteTextView =
+            view.findViewById(R.id.origin_edit_text)
         private val swapDirections: ImageView = view.findViewById(R.id.swap_directions)
         private var toggle = true
 
@@ -33,22 +39,25 @@ class HeaderAdapter(val vm: DirectionsViewModel) : RecyclerView.Adapter<HeaderAd
             }
 
             addEntry.setOnClickListener {
-                    vm.launchApiRequest()
+                vm.launchApiRequest()
+                destinationEditText.apply {
+                    clearFocus()
+                    text.clear()
+                }
+                originExitText.apply {
+                    clearFocus()
+                    text.clear()
+                }
             }
 
             view.findViewById<PlacesAutocompleteTextView?>(R.id.origin_edit_text)
                 ?.setOnPlaceSelectedListener {
-
                     vm.setOrigin(it.place_id)
-
                 }
 
             view.findViewById<PlacesAutocompleteTextView?>(R.id.destination_edit_text)
                 ?.setOnPlaceSelectedListener {
-
                     vm.setDestination(it.place_id)
-
-
                 }
         }
 

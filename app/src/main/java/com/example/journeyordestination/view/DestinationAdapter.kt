@@ -69,7 +69,7 @@ class DestinationAdapter(
                     val editText: TextInputEditText =
                         (customLayout).findViewById(R.id.destination_text_input_edit_text)
                     editText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
-                        if (editText.text.toString().length < 15) {
+                        if (editText.text.toString().length < 16) {
                             binding.textViewRv.text = editText.text.toString()
                         } else {
                             Toast.makeText(context, "Enter less than 15 characters total", Toast.LENGTH_LONG)
