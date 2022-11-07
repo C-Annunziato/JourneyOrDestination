@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
 import android.text.style.ImageSpan
 import android.util.Log
 import android.view.LayoutInflater
@@ -98,17 +97,26 @@ class RecyclerViewFragment : Fragment() {
     }
 
     private fun setSpannable(tv: TextView) {
-        val icon: Drawable? = resources.getDrawable(R.drawable.ic_go_to_destination)
-        val string = SpannableString("1. Click the  \n 2. Then do this \n 3. Then do this")
-        icon?.setBounds(0, 0, icon.intrinsicWidth, icon.intrinsicHeight)
-       val img = icon?.let { ImageSpan(it, ImageSpan.ALIGN_CENTER) }
-        string.setSpan(
-            img,
-           13,
-         14,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-            tv.text = string
+        val iconCar: Drawable? = resources.getDrawable(R.drawable.ic_go_to_destination)
+        val iconCheck: Drawable? = resources.getDrawable(R.drawable.ic_complete_entry_dark)
+        val iconSwap: Drawable? = resources.getDrawable(R.drawable.ic_swap_directions)
+
+        val string =
+            SpannableString("1. Open Navigation  \n\n2. Choose Location\n    & Destination \n\n3. Swap if needed  \n\n4. Add to list  ")
+        iconCar?.setBounds(0, 0, iconCar.intrinsicWidth, iconCar.intrinsicHeight)
+        iconCheck?.setBounds(0, 0, iconCheck.intrinsicWidth, iconCheck.intrinsicHeight)
+        iconSwap?.setBounds(0, 0, iconSwap.intrinsicWidth, iconSwap.intrinsicHeight)
+
+        val imgCar = iconCar?.let { ImageSpan(it, ImageSpan.ALIGN_CENTER) }
+        string.setSpan(imgCar, 19, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val imgSwap = iconSwap?.let { ImageSpan(it, ImageSpan.ALIGN_CENTER) }
+        string.setSpan(imgSwap, 79,  80, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val imgCheck = iconCheck?.let { ImageSpan(it, ImageSpan.ALIGN_CENTER) }
+        string.setSpan(imgCheck, 97, 98, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        tv.text = string
 
 
     }
