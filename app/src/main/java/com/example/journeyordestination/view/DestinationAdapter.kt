@@ -1,25 +1,19 @@
 package com.example.journeyordestination.view
 
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.Path.Direction
-import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.journeyordestination.R
 import com.example.journeyordestination.databinding.ItemViewBinding
-import com.example.journeyordestination.viewmodel.DirectionsViewModel
 import com.google.android.material.textfield.TextInputEditText
 
 
@@ -56,7 +50,7 @@ class DestinationAdapter(
 
         fun createAlertDialog(context: Context?) {
             context?.let {
-                AlertDialog.Builder(it).setIcon(R.drawable.ic_delete_row)
+                AlertDialog.Builder(it)
                     .setMessage("Are you sure you want to delete this Item?")
                     .setPositiveButton("Yes") { _, _ ->
                         removeItem(bindingAdapterPosition)

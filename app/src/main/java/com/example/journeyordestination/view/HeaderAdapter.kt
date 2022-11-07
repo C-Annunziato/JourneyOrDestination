@@ -1,20 +1,13 @@
 package com.example.journeyordestination.view
 
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.journeyordestination.R
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
-import com.google.android.material.textfield.TextInputLayout
 import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
-import kotlinx.coroutines.launch
 
 const val TAG2 = "frag"
 class HeaderAdapter(val vm: DirectionsViewModel) : RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
@@ -58,8 +51,6 @@ class HeaderAdapter(val vm: DirectionsViewModel) : RecyclerView.Adapter<HeaderAd
 
                 }
         }
-
-
 
     }
 

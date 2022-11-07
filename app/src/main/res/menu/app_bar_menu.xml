@@ -7,5 +7,11 @@
         android:icon="@drawable/ic_go_to_destination"
         android:title="Add Contact"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_help_item"
+        android:icon="@drawable/ic_help_icon"
+        android:title="Help Icon"
+        app:showAsAction="ifRoom"
+        />
 
 </menu>

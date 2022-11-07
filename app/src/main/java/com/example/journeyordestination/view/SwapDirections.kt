@@ -7,11 +7,7 @@ import androidx.core.view.updateLayoutParams
 import com.example.journeyordestination.R
 import com.google.android.material.textfield.TextInputLayout
 
-class SwapDirections() {
-
-    fun foo(){
-
-    }
+class SwapDirections {
 
     companion object {
 
