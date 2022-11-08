@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">JourneyOrDestination</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="destinations">Destinations</string>
     <string name="add_destinations">Add Destinations</string>
+    <string name="name_of_destination">Name of Destination</string>
+    <string name="your_destination">Your Destination</string>
+    <string name="your_location">Your Location</string>
+    <string name="checkmark">checkmark</string>
+    <string name="swap">swap</string>
+    <string name="entry_name">Entry Name</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="help_icon">Help Icon</string>
 </resources>

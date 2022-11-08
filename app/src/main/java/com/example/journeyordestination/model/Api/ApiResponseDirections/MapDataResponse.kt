@@ -5,15 +5,4 @@ data class MapDataResponse(
     val routes: List<Route>,
     val status: String
 
-
 )
-//    : List<MapDataResponse> {
-//
-//
-//    fun flatten(): List<MapDataResponse> {
-//        val flatpack = mutableListOf<MapDataResponse>()
-//        routes?.let { flatpack.add(MapDataResponse(routes)) }
-//        return flatpack
-//    }
-//
-//}

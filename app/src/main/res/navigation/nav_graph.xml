@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/recyclerViewFragment">
 
     <fragment
         android:id="@+id/recyclerViewFragment"
         android:name="com.example.journeyordestination.view.RecyclerViewFragment"
-        android:label="@string/destinations"
-        tools:layout="@layout/fragment_recycler_view">
-        <action
-            android:id="@+id/action_recyclerViewFragment_to_addDestinationFragment"
-            app:destination="@id/addDestinationFragment" />
-    </fragment>
-
-<fragment
-    android:id="@+id/menu_add_contact"
-    android:label="Add Contact"
-    android:name="com.example.journeyordestination.view.AddDestinationFragment"
-    />
-    <fragment
-        android:id="@+id/addDestinationFragment"
-        android:name="com.example.journeyordestination.view.AddDestinationFragment"
-        android:label="@string/add_destinations" />
-
+        android:label="RecyclerViewFragment" />
 </navigation>

@@ -40,7 +40,6 @@ class SwapDirections {
             editText2.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 // set editText2's lps to editText1's layout params
 
-
                 //Undo bottom constraints
                 bottomToBottom = ConstraintLayout.LayoutParams.UNSET
                 endToStart = ConstraintLayout.LayoutParams.UNSET
@@ -76,7 +75,6 @@ class SwapDirections {
             }
         }
 
-
         fun swapBack(view: View) {
 
             val editText1: TextInputLayout = view.findViewById(R.id.first_text_field_layout)
@@ -88,7 +86,6 @@ class SwapDirections {
 
             editText1.updateLayoutParams<ConstraintLayout.LayoutParams> {
                 // set editTexts1's lps to editText2's layout params starting from the position of editText2 (BOTTOM)
-
 
                 //Undo bottom constrains
                 bottomToBottom = ConstraintLayout.LayoutParams.UNSET
@@ -121,7 +118,6 @@ class SwapDirections {
 
             }
 
-
             completeEntry.updateLayoutParams<ConstraintLayout.LayoutParams> {
 
                 //Keep at top
@@ -129,7 +125,6 @@ class SwapDirections {
                 topToTop = editText1.id
                 startToEnd = editText1.id
                 endToEnd = constraintLayout.id
-
 
             }
 
@@ -143,10 +138,6 @@ class SwapDirections {
 
             }
         }
-
-
     }
-
-
 }
 

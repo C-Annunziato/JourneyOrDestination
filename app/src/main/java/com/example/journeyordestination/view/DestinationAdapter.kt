@@ -40,15 +40,15 @@ class DestinationAdapter(
     ) : ViewHolder(binding.root) {
 
 
-        val context = binding.textView.context
+        private val context: Context = binding.textView.context
 
         init {
             binding.textView.setOnClickListener { createAlertDialog(context) }
             binding.textViewRv.setOnClickListener { createEditTextDialog(context) }
-
         }
 
-        fun createAlertDialog(context: Context?) {
+        //alert dialog for deleting rv entries
+        private fun createAlertDialog(context: Context?) {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage("Are you sure you want to delete this Item?")
@@ -59,7 +59,8 @@ class DestinationAdapter(
             }
         }
 
-        fun createEditTextDialog(context: Context?) {
+        //alert dialog for changing name of entry
+        private fun createEditTextDialog(context: Context?) {
             context?.let {
                 AlertDialog.Builder(it).create().apply {
                     val customLayout: View = LayoutInflater.from(context).inflate(
@@ -99,7 +100,6 @@ class DestinationAdapter(
     }
 
     override fun onBindViewHolder(holder: DestinationViewholder, position: Int) {
-        Log.i(TAG, "onbindviewholder being called")
         holder.bind(getItem(position))
 
     }

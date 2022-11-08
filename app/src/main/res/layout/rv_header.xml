@@ -40,7 +40,7 @@
                     android:id="@+id/origin_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Your Location"
+                    android:hint="@string/your_location"
                     android:inputType="text"
                     app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
                     app:pacv_historyFile="@null" />
@@ -63,7 +63,7 @@
                     android:id="@+id/destination_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Your Destination"
+                    android:hint="@string/your_destination"
                     android:inputType="text"
                     app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
                     app:pacv_historyFile="@null" />
@@ -79,11 +79,12 @@
                 android:focusable="true"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:src="@drawable/ic_complete_entry_dark"
+                android:src="@drawable/ic_complete_entry"
                 app:layout_constraintBottom_toBottomOf="@+id/first_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/first_text_field_layout"
-                app:layout_constraintTop_toTopOf="@+id/first_text_field_layout" />
+                app:layout_constraintTop_toTopOf="@+id/first_text_field_layout"
+                android:contentDescription="@string/checkmark" />
 
             <ImageView
                 android:id="@+id/swap_directions"
@@ -98,7 +99,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/second_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/second_text_field_layout"
-                app:layout_constraintTop_toTopOf="@+id/second_text_field_layout" />
+                app:layout_constraintTop_toTopOf="@+id/second_text_field_layout"
+                android:contentDescription="@string/swap" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

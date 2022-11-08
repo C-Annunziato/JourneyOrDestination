@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ImageSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 
 
-const val hey = "fragment"
+const val TAG1 = "fragment"
 
 class RecyclerViewFragment : Fragment() {
 
@@ -42,6 +41,7 @@ class RecyclerViewFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //setting recyclerview adapter and passing in removeAt functionality
         destinationAdapter = DestinationAdapter { position ->
             viewModel.remove(position)
         }
@@ -49,6 +49,7 @@ class RecyclerViewFragment : Fragment() {
         chooseRVLayout()
         observeViewModel()
 
+        //spannable for how to use app directions
         val tv: TextView = view.findViewById(R.id.how_to_use_app_text_view)
         setSpannable(tv)
     }
@@ -56,6 +57,7 @@ class RecyclerViewFragment : Fragment() {
     private fun chooseRVLayout() {
         recyclerView = binding.recyclerViewDestinations
         recyclerView.layoutManager = LinearLayoutManager(context)
+        //linking both adapters
         val concatAdapter = ConcatAdapter(headerAdapter, destinationAdapter)
         recyclerView.adapter = concatAdapter
     }
@@ -63,18 +65,14 @@ class RecyclerViewFragment : Fragment() {
     private fun observeViewModel() {
 
         viewModel.destinationApiResponse.observe(viewLifecycleOwner) { duration ->
-            Log.i(hey, "From: Fragment ->OUTSIDE DURATION")
             duration?.let {
-                Log.i(hey, "From: Fragment -> observeViewModel destinationapiresponse called")
-
+                //update rv list with ListAdapter "submitList" function
                 destinationAdapter.submitList(duration)
-                headerAdapter.updateListSize(duration.size)
             }
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             isLoading.let {
-                Log.i(TAG, "From: Fragment -> loading view is being set to GONE")
                 binding.loadingView.visibility = if (it) View.VISIBLE else View.GONE
                 binding.listError.visibility = View.GONE
                 binding.howToUseAppTextView.visibility = View.GONE
@@ -98,7 +96,7 @@ class RecyclerViewFragment : Fragment() {
 
     private fun setSpannable(tv: TextView) {
         val iconCar: Drawable? = resources.getDrawable(R.drawable.ic_go_to_destination)
-        val iconCheck: Drawable? = resources.getDrawable(R.drawable.ic_complete_entry_dark)
+        val iconCheck: Drawable? = resources.getDrawable(R.drawable.ic_complete_entry)
         val iconSwap: Drawable? = resources.getDrawable(R.drawable.ic_swap_directions)
 
         val string =
@@ -117,9 +115,5 @@ class RecyclerViewFragment : Fragment() {
         string.setSpan(imgCheck, 97, 98, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         tv.text = string
-
-
     }
-
-
 }

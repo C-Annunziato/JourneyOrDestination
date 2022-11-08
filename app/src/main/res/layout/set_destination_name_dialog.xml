@@ -9,7 +9,7 @@
         android:layout_marginStart="40dp"
         android:maxLength="15"
         app:counterMaxLength="15"
-        android:background="#000000"
+        android:background="#415A70"
         app:counterEnabled="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,12 +19,11 @@
             android:id="@+id/destination_text_input_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Name of Destination"
-
+            android:background="#52728E"
+            android:hint="@string/name_of_destination"
             android:imeOptions="actionDone"
             android:inputType="text"
             android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 </layout>

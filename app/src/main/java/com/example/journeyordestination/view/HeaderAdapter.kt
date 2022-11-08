@@ -9,12 +9,9 @@ import com.example.journeyordestination.R
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
 import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
 
-const val TAG2 = "frag"
 
 class HeaderAdapter(val vm: DirectionsViewModel) :
     RecyclerView.Adapter<HeaderAdapter.HeaderViewHolder>() {
-
-    private var headerNum = 0
 
     inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -28,6 +25,7 @@ class HeaderAdapter(val vm: DirectionsViewModel) :
 
 
         init {
+            //swapping edit text constraints
             swapDirections.setOnClickListener {
                 if (toggle) {
                     SwapDirections.swap(view)
@@ -37,7 +35,7 @@ class HeaderAdapter(val vm: DirectionsViewModel) :
                     toggle = !toggle
                 }
             }
-
+            //add destination to rv and clear focus on edit text
             addEntry.setOnClickListener {
                 vm.launchApiRequest()
                 destinationEditText.apply {
@@ -50,11 +48,12 @@ class HeaderAdapter(val vm: DirectionsViewModel) :
                 }
             }
 
+            //take place input and set origin in vm
             view.findViewById<PlacesAutocompleteTextView?>(R.id.origin_edit_text)
                 ?.setOnPlaceSelectedListener {
                     vm.setOrigin(it.place_id)
                 }
-
+            //take place input and set destination in vm
             view.findViewById<PlacesAutocompleteTextView?>(R.id.destination_edit_text)
                 ?.setOnPlaceSelectedListener {
                     vm.setDestination(it.place_id)
@@ -69,17 +68,10 @@ class HeaderAdapter(val vm: DirectionsViewModel) :
     }
 
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-
+        //remains empty
     }
 
     override fun getItemCount(): Int {
         return 1
     }
-
-    fun updateListSize(listSize: Int) {
-        headerNum = listSize
-        notifyDataSetChanged()
-    }
-
-
 }

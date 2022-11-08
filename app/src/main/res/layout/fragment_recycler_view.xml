@@ -11,7 +11,7 @@
             android:id="@+id/recycler_view_destinations"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/bluecolor"
+            android:background="@color/rv_blue_background"
             android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
