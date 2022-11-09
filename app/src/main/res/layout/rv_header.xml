@@ -42,7 +42,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/your_location"
                     android:inputType="text"
-                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
+                    app:pacv_googleMapsApiKey="${@{buildConfig.PLACES_API_KEY}}"
                     app:pacv_historyFile="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/your_destination"
                     android:inputType="text"
-                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY"
+                    app:pacv_googleMapsApiKey="${@{constants.placesApiKey}}"
                     app:pacv_historyFile="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>

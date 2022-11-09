@@ -16,9 +16,11 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.journeyordestination.BuildConfig
 import com.example.journeyordestination.R
 import com.example.journeyordestination.databinding.FragmentRecyclerViewBinding
 import com.example.journeyordestination.viewmodel.DirectionsViewModel
+import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
 
 
 const val TAG1 = "fragment"
