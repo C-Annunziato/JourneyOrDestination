@@ -1,18 +1,20 @@
 package com.example.journeyordestination.viewmodel
 
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.journeyordestination.model.Api.ApiResponseDirections.MapDataResponse
 import com.example.journeyordestination.model.Api.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.reflect.typeOf
 
 const val TAG = "vm"
 
 class DirectionsViewModel() : ViewModel() {
 
-    private val _destinationApiResponse = MutableLiveData<List<String>>()
+    private val _destinationApiResponse = MutableLiveData<List<String>>(listOf())
     private val _loading = MutableLiveData(false)
     private val _howTo = MutableLiveData(true)
     private val _error = MutableLiveData<String>()
@@ -56,11 +58,11 @@ class DirectionsViewModel() : ViewModel() {
                     it.legs.map { it.duration.text }
                 }
                 if (body != null) {
-                    //if nothing in list then add nothing and force livedata update to avoid error
-                    //otherwise add the response to the list and force livedata update
-                    _destinationApiResponse.value = if(_destinationApiResponse.value == null) {
-                    body.flatten()
-                    } else body.flatten().plus(_destinationApiResponse.value as List<String>)
+                    //force update livedata and add the original list to the response
+                    //this is necessary else the list will only consist of your new data i.e. 1 entry
+                    //all previous entries will disappear; a quirk of LiveData
+                    _destinationApiResponse.value =
+                        body.flatten().plus(_destinationApiResponse.value as List<String>)
                 }
                 // progress bar false, and error textview false
                 _error.value = null
