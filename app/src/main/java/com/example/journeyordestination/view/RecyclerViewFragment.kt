@@ -2,6 +2,7 @@
 
 
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -96,10 +98,11 @@ class RecyclerViewFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun setSpannable(tv: TextView) {
-        val iconCar: Drawable? = resources.getDrawable(R.drawable.ic_go_to_destination)
-        val iconCheck: Drawable? = resources.getDrawable(R.drawable.ic_complete_entry)
-        val iconSwap: Drawable? = resources.getDrawable(R.drawable.ic_swap_directions)
+        val iconCar: Drawable? = resources.getDrawable(R.drawable.go_to_destination_icon)
+        val iconCheck: Drawable? = resources.getDrawable(R.drawable.complete_entry_icon)
+        val iconSwap: Drawable? = resources.getDrawable(R.drawable.swap_directions_icon)
 
         val string =
             SpannableString("1. Open Navigation  \n\n2. Choose Location\n    & Destination \n\n3. Swap if needed  \n\n4. Add to list  ")

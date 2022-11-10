@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="buildConfig"
             type="com.example.journeyordestination.BuildConfig" />
@@ -18,11 +19,10 @@
             android:id="@+id/rv_header_constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:layout_marginStart="28dp"
+            android:visibility="gone"
             android:layout_marginBottom="10dp"
             tools:context=".view.AddDestinationFragment">
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/first_text_field_layout"
@@ -42,8 +42,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/your_location"
                     android:inputType="text"
-                    app:pacv_googleMapsApiKey="${@{buildConfig.PLACES_API_KEY}}"
-                    app:pacv_historyFile="@null" />
+                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,8 +64,7 @@
                     android:layout_height="match_parent"
                     android:hint="@string/your_destination"
                     android:inputType="text"
-                    app:pacv_googleMapsApiKey="${@{constants.placesApiKey}}"
-                    app:pacv_historyFile="@null" />
+                    app:pacv_googleMapsApiKey="AIzaSyBlTSFb6MSdnDGm8JFLZvldXBOkkiitLkY" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,15 +74,15 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="@string/checkmark"
                 android:focusable="true"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:src="@drawable/ic_complete_entry"
+                android:src="@drawable/complete_entry_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/first_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/first_text_field_layout"
-                app:layout_constraintTop_toTopOf="@+id/first_text_field_layout"
-                android:contentDescription="@string/checkmark" />
+                app:layout_constraintTop_toTopOf="@+id/first_text_field_layout" />
 
             <ImageView
                 android:id="@+id/swap_directions"
@@ -92,15 +90,15 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
+                android:contentDescription="@string/swap"
                 android:focusable="true"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:src="@drawable/ic_swap_directions"
+                android:src="@drawable/swap_directions_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/second_text_field_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/second_text_field_layout"
-                app:layout_constraintTop_toTopOf="@+id/second_text_field_layout"
-                android:contentDescription="@string/swap" />
+                app:layout_constraintTop_toTopOf="@+id/second_text_field_layout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

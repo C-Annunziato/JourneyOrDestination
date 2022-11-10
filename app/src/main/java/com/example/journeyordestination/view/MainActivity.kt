@@ -47,21 +47,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // open and close header if car icon is selected
         val rvHeaderCL: ConstraintLayout = findViewById(R.id.rv_header_constraint_layout)
-        if (toggleDest && item.itemId == R.id.menu_add_contact) {
-            rvHeaderCL.visibility = View.VISIBLE
-        } else if (item.itemId == R.id.menu_add_contact) rvHeaderCL.visibility = View.GONE
-
-        toggleDest = !toggleDest
-
-        //show and hide help directions if help icon is selected
         val tv: TextView = findViewById(R.id.how_to_use_app_text_view)
-        if (toggleHelp && item.itemId == R.id.menu_help_item) {
-            tv.visibility = View.VISIBLE
-        } else if (item.itemId == R.id.menu_help_item) tv.visibility = View.GONE
-        toggleHelp = !toggleHelp
 
+        // open and close header if car icon is selected
+        when (item.itemId) {
+            R.id.menu_add_destination -> if (toggleDest) {
+                rvHeaderCL.visibility = View.VISIBLE
+                toggleDest = !toggleDest
+            } else {
+                rvHeaderCL.visibility = View.GONE
+                toggleDest = !toggleDest
+            }
+            //show and hide help directions if help icon is selected
+            R.id.menu_help_item -> if (toggleHelp) {
+                tv.visibility = View.VISIBLE
+                toggleHelp = !toggleHelp
+            } else {
+                tv.visibility = View.GONE
+                toggleHelp = !toggleHelp
+            }
+        }
         return true
     }
 

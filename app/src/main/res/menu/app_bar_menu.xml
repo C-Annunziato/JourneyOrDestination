@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_add_contact"
-        android:icon="@drawable/ic_go_to_destination"
-        android:title="@string/add_contact"
+        android:id="@+id/menu_add_destination"
+        android:icon="@drawable/go_to_destination_icon"
+        android:title="@string/add_destinations"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_help_item"
-        android:icon="@drawable/ic_help_icon"
+        android:icon="@drawable/help_icon"
         android:title="@string/help_icon"
         app:showAsAction="ifRoom"
         />
