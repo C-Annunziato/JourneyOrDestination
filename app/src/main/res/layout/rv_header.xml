@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="buildConfig"
-            type="com.example.journeyordestination.BuildConfig" />
-    </data>
-
     <FrameLayout
         android:id="@+id/header_frame_layout"
         android:layout_width="match_parent"

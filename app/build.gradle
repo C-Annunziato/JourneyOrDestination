@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.journeyordestination'
+    namespace "com.lydian.journeyordestination"
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.journeyordestination"
+        applicationId "com.lydian.journeyordestination"
         minSdk 23
         targetSdk 33
         versionCode 1

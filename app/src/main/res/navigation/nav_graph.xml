@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/recyclerViewFragment"
-        android:name="com.example.journeyordestination.view.RecyclerViewFragment"
+        android:name="com.lydian.journeyordestination.view.RecyclerViewFragment"
         android:label="Journey or Destination" />
 </navigation>
