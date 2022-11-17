@@ -3,7 +3,6 @@
   <h3 align="center"> Journey Or Destination App</h3>
 
   <p align="center">
-    <br />
     ·
     <a href="https://play.google.com/store/apps/details?id=com.lydian.journeyordestination&pli=1">App on Google Play Store</a>
     ·
