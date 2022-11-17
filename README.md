@@ -29,7 +29,7 @@
 
 ## Features
 
-Single Page Ui         |  Compare Times at a Glance     |  Autocomplete         |  Name Entries
+Single Page Ui         |  Compare Times Quickly     |  Autocomplete         |  Name Entries
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![Screenshot_20221108-135849](https://user-images.githubusercontent.com/68083360/202536332-7904fb64-f6bc-4220-aac9-7ade99640b0c.png)  |  ![Screenshot_20221108-141858](https://user-images.githubusercontent.com/68083360/202536378-bd4647ba-207a-42f8-9779-2b4008eac872.png)  |  ![Screenshot_20221108-142231](https://user-images.githubusercontent.com/68083360/202536664-0561110d-7cd9-444a-87f6-1c17df66e052.png)  |  ![Screenshot_20221108-141823](https://user-images.githubusercontent.com/68083360/202536683-c903e800-3109-4cde-ace9-f4039fabac38.png)
 <!-- CONTACT -->
